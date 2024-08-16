@@ -6,7 +6,7 @@ from tensorflow.keras.mixed_precision import set_global_policy
 from tensorflow.keras.losses import BinaryCrossentropy
 from tensorflow.keras.metrics import MeanIoU
 from tensorflow.keras.callbacks import EarlyStopping, ReduceLROnPlateau, ModelCheckpoint
-from data_loader import get_data_paths, get_dataset
+from tensor_data import get_data_paths, get_dataset
 
 # Enable mixed precision training
 set_global_policy('mixed_float16')
@@ -50,10 +50,10 @@ def unet_model(input_size=(256, 256, 3)):
     return model
 
 # Paths to your datasets
-train_images_path = r"D:\bgremoval\data\coco\filtered_train2017_person_only"
-train_masks_path = r"D:\bgremoval\data\coco\filtered_train2017_person_only_masks"
-val_images_path = r"D:\bgremoval\data\coco\filtered_val2017_person_only"
-val_masks_path = r"D:\bgremoval\data\coco\filtered_val2017_person_only_masks"
+train_images_path = r"D:\bgremoval\data\coco\train2017_person_only"
+train_masks_path = r"D:\bgremoval\data\coco\train2017_person_only_masks"
+val_images_path = r"D:\bgremoval\data\coco\val2017_person_only"
+val_masks_path = r"D:\bgremoval\data\coco\val2017_person_only_masks"
 
 # Get train and validation data paths
 train_image_files, train_mask_files = get_data_paths(train_images_path, train_masks_path)
